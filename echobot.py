@@ -54,9 +54,40 @@ def get_last_chat_id_and_text(updates):
     chat_id = updates["result"][last_update]["message"]["chat"]["id"]
     return (text, chat_id)
 
+def buy(text):
+    return text + " Khareedega bc!!"
 
 def send_message(text, chat_id):
-    url = URL + "sendMessage?text={}&chat_id={}".format(text, chat_id)
+    firstWord = text.split()[0].upper()
+    if firstWord == "NEWS":
+        responseText = "AAj ki taza khabar"
+    elif firstWord == "JOKE" or firstWord == "JOKES":
+        responseText = "Santa banta jokes"
+    elif firstWord == "WEATHER":
+        responseText = "BAARISH AAYEGI BC"
+    elif firstWord == "BUY":
+        try:
+            responseText = buy(text.split(' ', 1)[1])
+            print responseText.split()[1:]
+        except:
+            responseText = "Buy What bc?"
+    else:
+        tu = "TU"
+        if text.split()[0].upper() == tu.upper():
+            responseText = text.upper()
+        else: 
+            responseText = "Tu " + text.upper() + " bc!!"
+
+
+    # if text == 'joke':
+    #     # Logic to send joke
+    # elif text == 'news':
+    #     # Logic to send joke
+    # else:
+    #     
+    
+
+    url = URL + "sendMessage?text={}&chat_id={}".format(responseText, chat_id)
     get_url(url)
     
 
