@@ -62,7 +62,7 @@ def send_message(text, chat_id):
     if firstWord == "NEWS":
         responseText = "AAj ki taza khabar"
     elif firstWord == "JOKE" or firstWord == "JOKES":
-        responseText = "Santa banta jokes"
+        responseText = "Joke maregaa bc!"
     elif firstWord == "WEATHER":
         responseText = "BAARISH AAYEGI BC"
     elif firstWord == "BUY":
