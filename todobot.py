@@ -1,6 +1,7 @@
 import json 
 import requests
 import time
+import urllib
 from dbhelper import DBHelper
 import config
 
@@ -77,6 +78,7 @@ def get_last_chat_id_and_text(updates):
 
 
 def send_message(text, chat_id, reply_markup=None):
+    text = urllib.parse.quote_plus(text)
     url = URL + "sendMessage?text={}&chat_id={}&parse_mode=Markdown".format(text, chat_id)
     if reply_markup:
         url += '&reply_markup={}'.format(reply_markup)
